@@ -5,8 +5,8 @@ import Icon from "react-native-vector-icons/FontAwesome6";
 
 
 const QuizApp = () => {
-  const [answers, setAnswers] = useState({ q1: '', q2: '', q3: '' });
-  const correctAnswers = { q1: 'Elephant', q2: 'Leopard', q3: 'Kingfisher' };
+  const [answers, setAnswers] = useState({ q1: '', q2: '', q3: '', q4: '' });
+  const correctAnswers = { q1: 'Elephant', q2: 'Leopard', q3: 'Kingfisher', q4: 'Bee' };
 
   const handleSubmit = () => {
     let correctCount = 0;
@@ -15,9 +15,9 @@ const QuizApp = () => {
         correctCount += 1;
       }
     });
-    if (correctCount === 3) {Alert.alert(`Congrats! You have answered all of them correctly!`);}
-    else if (correctCount === 2) {Alert.alert(`So close! You have answered ${correctCount} correctly`);}
-    else if (correctCount === 1) {Alert.alert(`You only got ${correctCount} correct, you got this!`);}
+    if (correctCount === 4) {Alert.alert(`Congrats! You have answered all of them correctly!`);}
+    else if (correctCount === 3) {Alert.alert(`So close! You have answered ${correctCount} correctly`);}
+    else if (correctCount === 1 || correctCount === 2) {Alert.alert(`You only got ${correctCount} correct, you got this!`);}
     else {Alert.alert(`You got none of them right...better luck next time!`);}
   };
 
@@ -68,6 +68,19 @@ const QuizApp = () => {
           />
         </View>
 
+          <View>
+              <Image source={require('./img/bee.jpg')} style={styles.image} />
+              <Text>What animal is this?</Text>
+              <RNPickerSelect
+                  onValueChange={(value) => setAnswers({ ...answers, q4: value })}
+                  items={[
+                      { label: 'Bee', value: 'Bee' },
+                      { label: 'Butterfly', value: 'Butterfly' },
+                      { label: 'Mosquito', value: 'Mosquito' },
+                  ]}
+              />
+          </View>
+
         {/* Submit Button */}
         <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
           <Text>SUBMIT ANSWERS</Text>
@@ -81,7 +94,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         fontWeight: 'bold',
-        fontFamily: 'monospace'
+        fontFamily: 'monospace',
+        backgroundColor: 'green'
     },
   image: {
     width: 350,
