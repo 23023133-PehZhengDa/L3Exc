@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#007BFF',
         padding: 15,
         alignItems: 'center',
+          textTransform: 'capitalize',
       },
         Parent: {
         alignSelf: 'center',
