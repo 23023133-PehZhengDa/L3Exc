@@ -22,14 +22,15 @@ const QuizApp = () => {
   };
 
   return (
-      <ScrollView style={styles.container}>
-        <View>
-            <Text></Text>
-            <Text></Text>
-            <Text style={styles.header}><Icon name="paw" size={50} color="orange" />Guess the Animal!<Icon name="paw" size={50} color="orange" /></Text>
-            <Text></Text>
+      <ScrollView>
+          <View>
+              <Text></Text>
+              <Text></Text>
+              <Text style={styles.header}><Icon name="paw" size={50} color="orange" />Guess the Animal!<Icon name="paw" size={50} color="orange" /></Text>
+          </View>
+        <View style={styles.Parent}>
           <Image source={require('./img/elephant.jpg')} style={styles.image} />
-          <Text>What animal is this?</Text>
+          <Text style={styles.Child}>What animal is this?</Text>
           <RNPickerSelect
               onValueChange={(value) => setAnswers({ ...answers, q1: value })}
               items={[
@@ -41,9 +42,9 @@ const QuizApp = () => {
         </View>
 
 
-        <View>
+        <View style={styles.Parent}>
           <Image source={require('./img/leopard.jpg')} style={styles.image} />
-          <Text>What animal is this?</Text>
+          <Text style={styles.Child}>What animal is this?</Text>
           <RNPickerSelect
               onValueChange={(value) => setAnswers({ ...answers, q2: value })}
               items={[
@@ -55,9 +56,9 @@ const QuizApp = () => {
         </View>
 
         {/* Question 3 */}
-        <View>
+        <View style={styles.Parent}>
           <Image source={require('./img/kingfisher.jpg')} style={styles.image} />
-          <Text>What animal is this?</Text>
+          <Text style={styles.Child}>What animal is this?</Text>
           <RNPickerSelect
               onValueChange={(value) => setAnswers({ ...answers, q3: value })}
               items={[
@@ -68,9 +69,9 @@ const QuizApp = () => {
           />
         </View>
 
-          <View>
+          <View style={styles.Parent}>
               <Image source={require('./img/bee.jpg')} style={styles.image} />
-              <Text>What animal is this?</Text>
+              <Text style={styles.Child}>What animal is this?</Text>
               <RNPickerSelect
                   onValueChange={(value) => setAnswers({ ...answers, q4: value })}
                   items={[
@@ -97,16 +98,30 @@ const styles = StyleSheet.create({
         fontFamily: 'monospace',
         backgroundColor: 'green'
     },
-  image: {
-    width: 350,
-    height: 200,
-      alignSelf: 'center',
-  },
-  submitButton: {
-    backgroundColor: '#007BFF',
-    padding: 15,
-    alignItems: 'center',
-  },
+      image: {
+        width: 350,
+        height: 200,
+          alignSelf: 'center',
+      },
+      submitButton: {
+        backgroundColor: '#007BFF',
+        padding: 15,
+        alignItems: 'center',
+      },
+        Parent: {
+        alignSelf: 'center',
+            borderWidth: 1,
+            borderColor: 'Grey',
+            marginBottom: 5,
+            marginTop: 5,
+            maxWidth: 400
+        },
+    Child: {
+        textAlign: 'center',
+        borderWidth: 2,
+        fontSize: 24,
+        backgroundColor: "orange"
+    }
 });
 
 export default QuizApp;
